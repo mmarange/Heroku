@@ -2,9 +2,14 @@ function init() {
   // Grab a reference to the dropdown select element
   var url = "/samples"
   // Use the list of sample names to populate the select options
+ 
+
+
   d3.json(url).then((data) => {
    
    console.log("This is running from flask endpoint")
+
+   
             /*
                 age: 24,
             bbtype: "I",
@@ -15,7 +20,20 @@ function init() {
             wfreq: 2
             */
     // your-code-here 
+
+    options = d3.select('#selDataset')
+    names =  data.names;
+    names.forEach(name => {
+      options.append('option').text(name)
+      //options.append('options').value(name)
+      
+    })
+    
+    
+
     var subject_id = '940';
+
+
     //----extract from metadata key-----
     var metadata =  data.metadata;
     var filtered_meta = metadata.filter(m => m.id == subject_id)[0]
@@ -95,9 +113,9 @@ function init() {
       
       var layout = {
         title:  `Plot showing top 10 OTUs of subject ID: ${subject_id}`,
-        showlegend: false,
-        height: 600,
-        width: 600
+        // showlegend: false,
+        // height: 600,
+        // width: 600
       };
       
       Plotly.newPlot('bubble', data, layout);
