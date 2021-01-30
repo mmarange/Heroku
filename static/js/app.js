@@ -5,7 +5,7 @@ function init() {
   d3.json(url).then((data) => {
    
    console.log("This is running from flask endpoint")
-                /*
+            /*
                 age: 24,
             bbtype: "I",
             ethnicity: "Caucasian",
