@@ -24,8 +24,16 @@ function init() {
     options = d3.select('#selDataset')
     names =  data.names;
     names.forEach(name => {
-      options.append('option').text(name)
-      options.append('option').property('value', name)
+      //options.append('option').text(name)
+      //options.append('option').property('value', name).text(name);
+
+      option = options.append('option');
+      
+      option.property('value', name);
+      
+      option.text(name);
+
+      
       
     })
     
