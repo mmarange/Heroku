@@ -25,7 +25,7 @@ function init() {
     names =  data.names;
     names.forEach(name => {
       options.append('option').text(name)
-      options.append('option').value(name)
+      options.append('option').property('value', name)
       
     })
     
