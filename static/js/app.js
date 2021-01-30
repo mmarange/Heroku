@@ -1,3 +1,5 @@
+console.log('TESTING to see if this is current!')
+
 function init() {
   // Grab a reference to the dropdown select element
   var url = "/samples"
