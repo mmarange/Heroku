@@ -111,7 +111,7 @@ function buildCharts(subject_id) {
           value: wfreq,
           title: { text: "Wash Frequency", font: { size: 17 } },
           gauge: {
-            axis: { range: [null, ,10], tickwidth: 1, tickcolor: "royalblue" },
+            axis: { range: [null, 10], tickwidth: 1, tickcolor: "royalblue" },
             bar: { color: "royalblue" },
             bgcolor: "white",
             borderwidth: 2,
