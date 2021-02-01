@@ -21,7 +21,7 @@ function idOptions() {
 function init() {
   // Grab a reference to the dropdown select element
   
-  
+  console.log('in init()')
  
     // select.on("change")
 
@@ -47,8 +47,7 @@ function init() {
         
       selector = d3.select('#selDataset')
       idselected = selector.property('value')
-      
-      
+           
       var subject_id = idselected
       //var subject_id = select
       
@@ -196,7 +195,9 @@ function init() {
       var wfreq = filtered_meta.wfreq*/
 
     function  buildMetadata() {
+
       row = d3.select("table");
+      row.html("")
       row.append('tr').append("td").text(`Id: ${id}`);
       
       row.append('tr').append("td").text(`ethnicity: ${ethnicity}`);
@@ -235,7 +236,8 @@ init();
 
 selector = d3.select('#selDataset')
 idselected = selector.property('value')
-d3.select('#selDataset').on("change",init())
+//selector.on("change", function(){console.log('hello')})
+selector.on("change",init)
 
 
 console.log('----outside')
