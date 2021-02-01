@@ -15,7 +15,8 @@ function idOptions() {
       });
   });
 };
-  
+//Populate drop down
+idOptions();
 
 //var idselected = '940'
 function init() {
@@ -45,10 +46,15 @@ function init() {
 
         
         
-      selector = d3.select('#selDataset')
-      idselected = selector.property('value')
-           
-      var subject_id = idselected
+      selector = d3.select('#selDataset');
+
+      console.log(`selector:`);
+      console.log(selector);
+
+      idselected = selector.property('value');
+      
+      console.log(`idselected: ${idselected}`)
+      var subject_id = idselected;
       //var subject_id = select
       
 
@@ -56,14 +62,20 @@ function init() {
       //----extract from metadata key-----
       //extractData()
       var metadata =  data.metadata;
-      var filtered_meta = metadata.filter(m => m.id == subject_id)[0]
-      var age = filtered_meta.age
-      var bbtype = filtered_meta.bbtype
-      var ethnicity = filtered_meta.ethnicity
-      var gender = filtered_meta.gender
-      var id = filtered_meta.id
-      var location = filtered_meta.location
-      var wfreq = filtered_meta.wfreq
+      console.log(metadata);
+     
+
+      var filtered_meta = metadata.filter(m => m.id == subject_id)[0];
+      console.log(filtered_meta); 
+      //console.log(filtered_meta.age);
+      var bbtype = filtered_meta.bbtype;
+      var age = filtered_meta.age;
+      
+      var ethnicity = filtered_meta.ethnicity;
+      var gender = filtered_meta.gender;
+      var id = filtered_meta.id;
+      var location = filtered_meta.location;
+      var wfreq = filtered_meta.wfreq;
       //console.log('-----wfreq-----') 
       //console.log(wfreq) 
 
@@ -98,7 +110,8 @@ function init() {
           x: sample_values_plt,
           y: otu_ids_plt,
           orientation: 'h',
-          text: otu_labels_plt
+          text: otu_labels_plt,
+          marker: {color: 'royalblue'}
         }];
 
         var layout = {
@@ -148,10 +161,9 @@ function init() {
         var data = [
         {
           type: "indicator",
-          mode: "gauge+number+delta",
+          mode: "gauge+number",
           value: wfreq,
-          title: { text: "Speed", font: { size: 24 } },
-          delta: { reference: 6, increasing: { color: "RebeccaPurple" } },
+          title: { text: "Wash Frequency", font: { size: 15 } },
           gauge: {
             axis: { range: [null, 10], tickwidth: 1, tickcolor: "darkblue" },
             bar: { color: "darkblue" },
@@ -159,26 +171,20 @@ function init() {
             borderwidth: 2,
             bordercolor: "gray",
             steps: [
-              { range: [0, 10], color: "cyan" },
-              { range: [5, 8], color: "royalblue" }
+              { range: [0, 10], color: "lavender" }
+              
             ],
-            threshold: {
-              line: { color: "red", width: 8 },
-              thickness: 16
-              ,
-              value: wfreq
-            }
+           
           }
         }
         ];
       
       
         var layout = {
-          width: 500,
+          width: 300,
           height: 400,
           margin: { t: 25, r: 25, l: 25, b: 25 },
-          paper_bgcolor: "lavender",
-          font: { color: "darkblue", family: "Arial" }
+          
         };
         
         Plotly.newPlot('gauge', data, layout);
@@ -217,7 +223,7 @@ function init() {
   });
  
 };
-idOptions();
+
 
 /*
    Hints: Create additional functions to build the charts,
@@ -231,14 +237,22 @@ idOptions();
     buildMetadata()
 */
 
+
+
+
+selector = d3.select('#selDataset');
+idselected = selector.property('value');
+selector.on("change",init);
+
+
+
 // Initialize the dashboard
 init();
 
-selector = d3.select('#selDataset')
-idselected = selector.property('value')
+
 //selector.on("change", function(){console.log('hello')})
-selector.on("change",init)
 
 
-console.log('----outside')
-console.log(idselected)
+
+//console.log('----outside')
+//console.log(idselected)
